@@ -1,0 +1,35 @@
+/* Add some padding and margin to the form */
+.editing_form {
+    padding: 20px;
+    margin: 20px auto;
+    min-width: 500px;
+    max-width: 600px; /* Limit the maximum width of the form */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+    border-radius: 6px;
+  }
+  
+  /* Center the form horizontally */
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  /* Add some spacing between the label and input fields */
+  label {
+    margin-bottom: 5px;
+    display: inline-block;
+    width: 100%;
+  }
+  
+  /* Make the form responsive */
+  @media (max-width: 576px) {
+    /* Reduce the font size of the labels for smaller screens */
+    label {
+      font-size: 0.9rem;
+    }
+    /* Center the submit button on smaller screens */
+    button[type="submit"] {
+      display: block;
+      margin: 0 auto;
+    }
+  }
+  
