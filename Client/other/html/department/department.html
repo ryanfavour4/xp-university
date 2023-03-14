@@ -28,13 +28,16 @@
   </head>
 
   <body id="page-top">
+    <!-- LOADING SCREEN -->
     <div class="loading_screen" id="loading_screen">
-      <div class="bg-dark-fade-7 text-primary text-5xl w-100 position-fixed h-100 z-999 text-center d-flex align-items-center justify-content-center">
+      <div
+        class="bg-dark-fade-7 text-primary text-5xl w-100 position-fixed h-100 z-999 text-center d-flex align-items-center justify-content-center"
+      >
         <div class="spinner-border spinner-border-lg" role="status">
           <span class="sr-only">Loading...</span>
         </div>
       </div>
-      
+      <!-- LOADING SCREEN END -->
     </div>
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -92,11 +95,11 @@
           >
             <div class="bg-white py-2 collapse-inner rounded">
               <h6 class="collapse-header">Academic Setups:</h6>
-              <a class="collapse-item" href="#">Faculties</a>
-              <a class="collapse-item" href="../department/department.html">Departments</a>
-              <a class="collapse-item" href="../"
-                >Course of Studies</a
+              <a class="collapse-item" href="../faculty/faculty.html"
+                >Faculties</a
               >
+              <a class="collapse-item" href="#">Departments</a>
+              <a class="collapse-item" href="../">Course of Studies</a>
               <a class="collapse-item" href="../">Courses</a>
               <a class="collapse-item" href="../">Lecturers</a>
             </div>
@@ -198,12 +201,12 @@
 
       <!-- Content Wrapper -->
       <div id="content-wrapper" class="d-flex flex-column">
-        <!-- Modal for Faculty -->
+        <!-- Modal for Department -->
         <div class="modal" tabindex="-1" role="dialog" id="addModal">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title">New Faculty</h5>
+                <h5 class="modal-title">New Department</h5>
                 <button
                   type="button"
                   class="close"
@@ -214,15 +217,25 @@
                 </button>
               </div>
               <div class="modal-body">
-                <form id="addFacultyForm">
+                <form id="addDepartmentForm">
                   <div class="form-group">
-                    <label for="facultyName">Faculty Name</label>
+                    <label for="FacultyIdDropDown">Faculty ID</label>
+                    <select
+                      name="FacultyId"
+                      class="form-control"
+                      id="FacultyIdDropDown"
+                    >
+                      <option hidden value="">Select a Faculty ID</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="departmentName">Department Name</label>
                     <input
                       type="text"
                       class="form-control"
                       name="Name"
-                      id="facultyName"
-                      placeholder="e.g. Faculty of Law"
+                      id="departmentName"
+                      placeholder="e.g. Department of Law"
                     />
                   </div>
                   <div class="form-group">
@@ -251,8 +264,7 @@
                         class="form-check-input"
                         name="Status"
                         type="checkbox"
-                        id="status"
-                        value="Active"
+                        id="addstatus"
                       />
                       <label class="form-check-label" for="status">
                         Is active
@@ -267,7 +279,7 @@
             </div>
           </div>
         </div>
-        <!-- End of Modal for Faculty -->
+        <!-- End of Modal for Department -->
 
         <!-- Modal for Search -->
         <div class="modal" tabindex="-1" role="dialog" id="searchModal">
@@ -287,13 +299,23 @@
               <div class="modal-body">
                 <form id="searchModalForm">
                   <div class="form-group">
-                    <label for="facultyName">Name</label>
+                    <label for="searchDepartmentName">Name</label>
                     <input
                       type="text"
                       class="form-control"
                       name="Name"
-                      id="facultyName"
-                      placeholder="e.g. Faculty of Management Science"
+                      id="searchDepartmentName"
+                      placeholder=" e.g. Department of Management Science"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="searchFacultyid">Faculty Id</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      name="FacultyId"
+                      id="searchFacultyid"
+                      placeholder="Faculty Id"
                     />
                   </div>
                   <div class="form-group">
@@ -302,8 +324,7 @@
                         class="form-check-input"
                         name="Status"
                         type="checkbox"
-                        id="status"
-                        value="Active"
+                        id="filterstatus"
                       />
                       <label class="form-check-label" for="status">
                         Is active
@@ -571,25 +592,15 @@
             <div
               class="d-sm-flex align-items-center justify-content-between mb-4"
             >
-              <h1 class="h3 mb-0 text-gray-800">Faculties</h1>
+              <h1 class="h3 mb-0 text-gray-800">Department</h1>
 
-              <!-- Search form -->
-              <!-- <form class="form-inline">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button
-                  class="btn btn-outline-primary my-2 my-sm-0"
-                  type="submit"
-                >
-                  Search
-                </button>
-              </form> -->
-              <!-- End of search bar -->
               <button
                 data-toggle="modal"
                 data-target="#addModal"
                 class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
               >
-                <i class="fas fa-plus fa-sm text-white-50 mr-2"></i> Add Faculty
+                <i class="fas fa-plus fa-sm text-white-50 mr-2"></i> Add
+                Department
               </button>
 
               <!-- Search form -->
@@ -661,6 +672,6 @@
 
     <!-- My own js file -->
     <script src="../../js/Validate.js"></script>
-    <script src="../../js/faculty/faculty.js"></script>
+    <script src="../../js/department/department.js"></script>
   </body>
 </html>

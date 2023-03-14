@@ -1,38 +1,40 @@
 // GET ALL OUR INPUTS READY AHEAD OF TIME 
-const facultyIdInput = document.querySelector('#facultyIdInput');
+const departmentIdInput = document.querySelector('#departmentIdInput');
 const loading_screen = document.getElementById('loading_screen');
 
 
 const nameInput = document.querySelector('#nameInput');
+const facultyIdInput = document.querySelector('#facultyIdInput');
 const uniqueIdInput = document.querySelector('#uniqueIdInput');
 const codeInput = document.querySelector('#codeInput');
 const statusInput = document.querySelector('#statusInput');
 
 const editingForm = document.querySelector('#editingForm');
 
-// GET PARAMETERS OR ID FROM THE CURRENT FACULTY TO EDITING FORM
+// GET PARAMETERS OR ID FROM THE CURRENT DEPARTMENT TO EDITING FORM
 // Suppose the URL is http://example.com?param=value1&param2=value2
 
 const params = new URLSearchParams(window.location.search);
 // Get the value of the 'id' parameter
 const paramValue = params.get('id');
-facultyIdInput.value = paramValue;
+departmentIdInput.value = paramValue;
 
 
 // Get information from the id parameter
-const getFacultyById = async () => {
-    const dataObj = await axios.get(`http://localhost:8097/api/v1/faculties/${facultyIdInput.value}`)
+const getDepartmentById = async () => {
+    const dataObj = await axios.get(`http://localhost:8097/api/v1/departments/${departmentIdInput.value}`)
     const data = await dataObj.data
+    loading_screen.classList.add('d-none');
     nameInput.value  = data.Name;
-    uniqueIdInput.value  = data.UniqueId;;
+    facultyIdInput.value = data.FacultyId;
+    uniqueIdInput.value  = data.UniqueId;
     codeInput.value  = data.Code;
     statusInput.value  = data.Status;
-    loading_screen.classList.add('d-none');
 }
 
 
 
-document.addEventListener('DOMContentLoaded', getFacultyById);
+document.addEventListener('DOMContentLoaded', getDepartmentById);
 
 
 
@@ -50,8 +52,9 @@ editingForm.addEventListener('submit', (e) => {
 
     // OBEJCT TO SEND TO DB
     const submitForm = {
-        "FacultyId": Number(facultyIdInput.value),
+        "DepartmentId": Number(departmentIdInput.value),
         "Name": nameInput.value,
+        "FacultyId": facultyIdInput.value,
         "UniqueId": uniqueIdInput.value,
         "Code": codeInput.value,
         "Status": Number(statusInput.value)
@@ -66,8 +69,8 @@ editingForm.addEventListener('submit', (e) => {
         alert(validate._errors[0])
     }else{
     // Make put request
-    axios.put('http://localhost:8097/api/v1/faculties', submitForm).then((result) => {
-        window.location.href = 'http://localhost:5500/Client/other/html/faculty/faculty.html'
+    axios.put('http://localhost:8097/api/v1/departments', submitForm).then((result) => {
+        window.location.href = 'http://localhost:5500/Client/other/html/department/department.html'
       }).catch((err) => {
         console.log(err);
       });

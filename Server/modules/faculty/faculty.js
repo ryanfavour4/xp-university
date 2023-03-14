@@ -33,7 +33,7 @@ class Faculty {
   getFaculties = async (req, res) => {
     try {
       const { Status, Name } = req.body;
-      if (!Status && !Name) {
+      if (Status < 0  && !Name) {
         return res.status(400).json({ Error: "Please input a valid query" });
       } else {
         const retVal = await db.getFaculties(Status, Name);
@@ -133,7 +133,7 @@ class Faculty {
     if (!faculty.Code || faculty.Code === "") {
       return "Invalid/Missing code";
     }
-    if (!faculty.Status || faculty.Status === 0) {
+    if (faculty.Status < 0) {
       return "Invalid/Missing status";
     }
     return null;
