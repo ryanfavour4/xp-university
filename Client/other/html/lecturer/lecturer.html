@@ -98,10 +98,16 @@
               <a class="collapse-item" href="../faculty/faculty.html"
                 >Faculties</a
               >
-              <a class="collapse-item" href="#">Departments</a>
-              <a class="collapse-item" href="../">Course of Studies</a>
+              <a class="collapse-item" href="../department/department.html"
+                >Departments</a
+              >
+              <a
+                class="collapse-item"
+                href="../course-of-study/courseofstudy.html"
+                >Course of Studies</a
+              >
               <a class="collapse-item" href="../">Courses</a>
-              <a class="collapse-item" href="../../html/lecturer/lecturer.html">Lecturers</a>
+              <a class="collapse-item" href="#">Lecturers</a>
             </div>
           </div>
         </li>
@@ -201,12 +207,12 @@
 
       <!-- Content Wrapper -->
       <div id="content-wrapper" class="d-flex flex-column">
-        <!-- Modal for Department -->
+        <!-- Modal for Lecturer -->
         <div class="modal" tabindex="-1" role="dialog" id="addModal">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title">New Department</h5>
+                <h5 class="modal-title">New Lecturer</h5>
                 <button
                   type="button"
                   class="close"
@@ -217,47 +223,63 @@
                 </button>
               </div>
               <div class="modal-body">
-                <form id="addDepartmentForm">
+                <form id="addLecturerForm">
+
                   <div class="form-group">
-                    <label for="FacultyIdDropDown">Faculty ID</label>
-                    <select
-                      name="FacultyId"
+                    <label for="FirstName">First Name</label>
+                    <input
+                      type="text"
                       class="form-control"
-                      id="FacultyIdDropDown"
+                      name="FirstName"
+                      id="FirstName"
+                      placeholder="e.g. Mr Lawal"
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="Surname">Sur-Name</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="Surname"
+                      id="Surname"
+                      placeholder="e.g. Obi"
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="OtherNames">Other Name</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="OtherNames"
+                      id="OtherNames"
+                      placeholder="e.g. Bola"
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="departmentId">Department</label>
+                    <select
+                      name="departmentId"
+                      class="form-control"
+                      id="departmentId"
                     >
-                      <option hidden value="">Select a Faculty ID</option>
+                      <option hidden value="">Select a Department ID</option>
                     </select>
                   </div>
+
                   <div class="form-group">
-                    <label for="departmentName">Department Name</label>
+                    <label for="StaffId">Staff ID</label>
                     <input
-                      type="text"
+                      type="number"
                       class="form-control"
-                      name="Name"
-                      id="departmentName"
-                      placeholder="e.g. Department of Law"
+                      name="StaffId"
+                      id="StaffId"
+                      placeholder="e.g. 302"
                     />
                   </div>
-                  <div class="form-group">
-                    <label for="code">Code</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      name="Code"
-                      id="code"
-                      placeholder=" e.g. 02"
-                    />
-                  </div>
-                  <div class="form-group">
-                    <label for="uniqueId">Unique ID</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      name="UniqueId"
-                      id="uniqueId"
-                      placeholder="e.g LAW10"
-                    />
-                  </div>
+                  
                   <div class="form-group">
                     <div class="form-check">
                       <input
@@ -266,11 +288,12 @@
                         type="checkbox"
                         id="addstatus"
                       />
-                      <label class="form-check-label" for="status">
+                      <label class="form-check-label" for="addstatus">
                         Is active
                       </label>
                     </div>
                   </div>
+
                   <button type="submit" class="btn btn-primary float-right">
                     Add
                   </button>
@@ -279,7 +302,7 @@
             </div>
           </div>
         </div>
-        <!-- End of Modal for Department -->
+        <!-- End of Modal for Lecturer -->
 
         <!-- Modal for Search -->
         <div class="modal" tabindex="-1" role="dialog" id="searchModal">
@@ -299,23 +322,23 @@
               <div class="modal-body">
                 <form id="searchModalForm">
                   <div class="form-group">
-                    <label for="searchDepartmentName">Name</label>
+                    <label for="searchFirstName">First Name</label>
                     <input
                       type="text"
                       class="form-control"
-                      name="Name"
-                      id="searchDepartmentName"
-                      placeholder=" e.g. Department of Management Science"
+                      name="searchFirstName"
+                      id="searchFirstName"
+                      placeholder=" e.g. Mr Lawal"
                     />
                   </div>
                   <div class="form-group">
-                    <label for="searchFacultyid">Faculty Id</label>
+                    <label for="searchDepartmentid">Faculty Id</label>
                     <input
                       type="number"
                       class="form-control"
-                      name="FacultyId"
-                      id="searchFacultyid"
-                      placeholder="Faculty Id"
+                      name="searchDepartmentid"
+                      id="searchDepartmentid"
+                      placeholder="Department Id"
                     />
                   </div>
                   <div class="form-group">
@@ -326,7 +349,7 @@
                         type="checkbox"
                         id="filterstatus"
                       />
-                      <label class="form-check-label" for="status">
+                      <label class="form-check-label" for="filterstatus">
                         Is active
                       </label>
                     </div>
@@ -592,7 +615,7 @@
             <div
               class="d-sm-flex align-items-center justify-content-between mb-4"
             >
-              <h1 class="h3 mb-0 text-gray-800">Department</h1>
+              <h1 class="h3 mb-0 text-gray-800">Lecturer</h1>
 
               <button
                 data-toggle="modal"
@@ -600,7 +623,7 @@
                 class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
               >
                 <i class="fas fa-plus fa-sm text-white-50 mr-2"></i> Add
-                Department
+                Lecturer
               </button>
 
               <!-- Search form -->
@@ -619,9 +642,10 @@
                 <thead>
                   <tr>
                     <th scope="col">S/N</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">UniqueId</th>
-                    <th scope="col">Code</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Other Name</th>
+                    <th scope="col">Staff ID</th>
                     <th scope="col">Status</th>
                     <th scope="col">Actions</th>
                   </tr>
@@ -672,6 +696,6 @@
 
     <!-- My own js file -->
     <script src="../../js/Validate.js"></script>
-    <script src="../../js/department/department.js"></script>
+    <script src="../../js/lecturer/lecturer.js"></script>
   </body>
 </html>

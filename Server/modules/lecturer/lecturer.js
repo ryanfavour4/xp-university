@@ -16,8 +16,8 @@ class Lecturer{
 
     async getLecturers(req, res){
         try{
-            const { DepartmentId, Status, Name } = req.body;
-            const retVal = await db.getLecturers(DepartmentId, Status, Name);
+            const { DepartmentId, Status, FirstName } = req.body;
+            const retVal = await db.getLecturers(DepartmentId, Status, FirstName);
             
             if(retVal == null){
                 res.status(400).json({
@@ -131,7 +131,7 @@ const validator = (lecturer) => {
     if(lecturer.OtherNames && (typeof lecturer?.OtherNames !== "string" || lecturer.OtherNames.length < 3)){
         return "Invalid/Empty Lecturer Other Names";
     }
-    if(!lecturer.Status  || lecturer.Status < 0){
+    if(lecturer.Status < 0){
         return "Invalid Status";
     }
     return "";

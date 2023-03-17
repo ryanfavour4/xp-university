@@ -29,7 +29,7 @@ const getLecturers = async (deptId, status, name) => {
       index++
       values.push(deptId);
     }
-    if (status && status > -1) {
+    if (status > -1) {
       query += ` AND "Status" = $${index}`;
       values.push(status);
     }

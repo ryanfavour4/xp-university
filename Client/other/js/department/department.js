@@ -38,7 +38,7 @@ const populate = async () => {
     const fetchFacultyId = await axios.get('http://localhost:8097/api/v1/faculties');
     const fetchFacultyIdData = fetchFacultyId.data;
     const returnedData = fetchFacultyIdData.map((eachFaculty, index) => {
-        return `<option value=${eachFaculty.FacultyId}>${eachFaculty.FacultyId}</option>`
+        return `<option value=${eachFaculty.FacultyId}>${eachFaculty.Name}</option>`
     })
 
     facultyIdDropDown.innerHTML += returnedData.join('');
