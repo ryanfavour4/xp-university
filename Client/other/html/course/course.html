@@ -106,8 +106,8 @@
                 href="../course-of-study/courseofstudy.html"
                 >Course of Studies</a
               >
-              <a class="collapse-item" href="../course/course.html">Courses</a>
-              <a class="collapse-item" href="#">Lecturers</a>
+              <a class="collapse-item" href="#">Courses</a>
+              <a class="collapse-item" href="../lecturer/lecturer.html">Lecturers</a>
             </div>
           </div>
         </li>
@@ -212,7 +212,7 @@
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title">New Lecturer</h5>
+                <h5 class="modal-title">New Course</h5>
                 <button
                   type="button"
                   class="close"
@@ -224,7 +224,6 @@
               </div>
               <div class="modal-body">
                 <form id="addLecturerForm">
-
                   <div class="form-group">
                     <label for="FirstName">First Name</label>
                     <input
@@ -279,7 +278,7 @@
                       placeholder="e.g. 302"
                     />
                   </div>
-                  
+
                   <div class="form-group">
                     <div class="form-check">
                       <input
@@ -322,17 +321,17 @@
               <div class="modal-body">
                 <form id="searchModalForm">
                   <div class="form-group">
-                    <label for="searchFirstName">First Name</label>
+                    <label for="Name">Name</label>
                     <input
                       type="text"
                       class="form-control"
-                      name="searchFirstName"
-                      id="searchFirstName"
-                      placeholder=" e.g. Mr Lawal"
+                      name="Name"
+                      id="Name"
+                      placeholder=" e.g. General English"
                     />
                   </div>
                   <div class="form-group">
-                    <label for="searchDepartmentid">Faculty Id</label>
+                    <label for="searchDepartmentid">Department Id</label>
                     <input
                       type="number"
                       class="form-control"
@@ -615,7 +614,7 @@
             <div
               class="d-sm-flex align-items-center justify-content-between mb-4"
             >
-              <h1 class="h3 mb-0 text-gray-800">Lecturer</h1>
+              <h1 class="h3 mb-0 text-gray-800">Course</h1>
 
               <button
                 data-toggle="modal"
@@ -623,7 +622,7 @@
                 class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
               >
                 <i class="fas fa-plus fa-sm text-white-50 mr-2"></i> Add
-                Lecturer
+                Course
               </button>
 
               <!-- Search form -->
@@ -642,12 +641,14 @@
                 <thead>
                   <tr>
                     <th scope="col">S/N</th>
-                    <th scope="col">First Name</th>
-                    <th scope="col">Last Name</th>
-                    <th scope="col">Other Name</th>
-                    <th scope="col">Staff ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Unique ID</th>
+                    <th scope="col">Unit</th>
+                    <th scope="col">Code</th>
+                    <th scope="col">Course Level</th>
+                    <th scope="col">Course Semester</th>
                     <th scope="col">Status</th>
-                    <th scope="col">Actions</th>
+                    <th scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody id="table-body">
@@ -696,6 +697,6 @@
 
     <!-- My own js file -->
     <script src="../../js/Validate.js"></script>
-    <script src="../../js/lecturer/lecturer.js"></script>
+    <script src="../../js/course/course.js"></script>
   </body>
 </html>

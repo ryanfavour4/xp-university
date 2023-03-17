@@ -158,7 +158,7 @@ const validator = (course) => {
   if (course.CourseSemester == 0) {
     return "Invalid Course Semester";
   }
-  if (course.Status == 0) {
+  if (course.Status < 0) {
     return "Invalid Status";
   }
   return "";
