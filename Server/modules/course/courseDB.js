@@ -23,15 +23,16 @@ const getCourses = async (deptId, status, name) => {
       index++;
       values.push(`%${name}%`);
     }
+    if (status > -1) {
+      query +=  ` AND "Status" = $${index}`;
+      values.push(status);
+    }
     if (deptId && deptId > 0) {
       query += ` AND "DepartmentId" = $${index}`;
       index++
       values.push(deptId);
     }
-    if (status >= 0) {
-      query +=  ` AND "Status" = $${index}`;
-      values.push(status);
-    }
+  
     query += ' ORDER BY "CourseId" ASC ';
     const result = await pool.query(query, values);
     if (result?.rows.length > 0) {

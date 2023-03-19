@@ -150,32 +150,37 @@ function deletecourse(id) {
 }
 
 //? ADD A FACULTY TO THE DATABASE ON CLICK
-const addLecturerForm = document.getElementById("addLecturerForm");
+const addCourseForm = document.getElementById("addCourseForm");
 
-addLecturerForm.addEventListener("submit", (e) => {
+addCourseForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
     loading_screen.classList.remove("d-none");
 
-    const FirstName = document.getElementById("FirstName");
-    const Surname = document.getElementById("Surname");
-    const OtherNames = document.getElementById("OtherNames");
-    const StaffId = document.getElementById("StaffId");
+    const Name = document.getElementById("Name");
+    const UniqueId = document.getElementById("UniqueId");
+    const Code = document.getElementById("Code");
+    const Units = document.getElementById("Units");
     const departmentId = document.getElementById("departmentId");
+    const CourseLevel = document.getElementById("CourseLevel");
+    const CourseSemester = document.getElementById("CourseSemester");
     const addstatus = document.getElementById("addstatus");
 
     const formData = {
-        FirstName: FirstName.value,
-        Surname: Surname.value,
-        OtherNames: OtherNames.value,
-        StaffId: Number(StaffId.value),
+        Name: Name.value,
+        UniqueId: UniqueId.value,
+        Code: Code.value,
+        Units: Number(Units.value),
+        CourseLevel: Number(CourseLevel.value),
         DepartmentId: Number(departmentId.value),
+        CourseSemester: CourseSemester.value,
         Status: (addstatus.value = addstatus.checked == true ? 1 : 0),
     };
 
     const validate = new Validate();
-    validate.length(formData.FirstName, 3, 50, "First Name");
-    validate.length(formData.Surname, 3, 50, "Surname");
+    validate.length(formData.Name, 3, 50, "Name");
+    validate.length(formData.Code, 3, 50, "Code");
+    validate.length(formData.CourseSemester, 1, 10, "Course Semester");
 
     if (validate.errors.length > 0) {
         alert(validate.errors[0]);
@@ -183,7 +188,7 @@ addLecturerForm.addEventListener("submit", (e) => {
     } else {
         // Make post request
         axios
-            .post("http://localhost:8097/api/v1/lecturers/add", formData)
+            .post("http://localhost:8097/api/v1/courses/add", formData)
             .then((result) => {
                 loading_screen.classList.add("d-none");
                 window.location.reload();
