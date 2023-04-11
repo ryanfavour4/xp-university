@@ -68,7 +68,7 @@ class Course {
       if (!Code || Code.length < 2) {
         return res.status(400).json({ Error: "Invalid Code" });
       }
-      if (!Status || Status < 0) {
+      if (Status < 0) {
         return res.status(400).json({ Error: "Invalid Status" });
       }
       const retvalue = await db.addDepartment({Name, FacultyId, UniqueId, Code, Status});

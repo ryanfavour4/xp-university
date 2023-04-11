@@ -27,7 +27,7 @@ const getDepartments = async (facultyId, status, name) => {
       index++
       values.push(facultyId);
     }
-    if (status && status > -1) {
+    if (status > -1) {
       query += ` AND "Status" = $${index}`;
       values.push(status);
     }
